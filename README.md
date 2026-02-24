@@ -80,8 +80,9 @@ cd SD1.5_AXM1-AX8850_Euler
 Create and activate a virtual environment:
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
+mkdir -p /home/rock/venvs
+python3 -m venv .venv_sd15
+source .venv_sd15/bin/activate
 pip install -U pip
 ```
 
