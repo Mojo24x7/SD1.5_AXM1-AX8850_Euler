@@ -218,31 +218,9 @@ This repository provides the **runtime orchestration code**; the compiled `.axmo
 ---
 ###REQUIREMENTS : 
 
+-- see requirements.txt
 
-# Python deps for SD1.5 AX-M1 runtime (Euler)
-# Note: AXCLRT / axengine / onnxruntime with AXCLRTExecutionProvider may come from Radxa/AXERA packages.
-# Install the AXCL driver per Radxa docs first:
-# https://docs.radxa.com/en/aicore/ax-m1/getting-started/env_install
-
-numpy>=1.23
-pillow>=9.5
-opencv-python>=4.7
-
-# Diffusers + tokenizer stack
-diffusers>=0.24
-transformers>=4.35
-tokenizers>=0.14
-safetensors>=0.4
-accelerate>=0.24
-
-# Web UI
-flask>=2.2
-requests>=2.28
-
-# Utilities
-tqdm>=4.64
-pyyaml>=6.0
-
+---
 
 ## Disclaimer
 
