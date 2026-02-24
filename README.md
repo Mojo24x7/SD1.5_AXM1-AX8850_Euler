@@ -80,7 +80,6 @@ Create and activate a virtual environment:
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -U pip
-pip install requirements.txt
 ```
 
 Install Python requirements (choose one approach):
@@ -217,7 +216,8 @@ All model weights remain under their original upstream licenses and terms.
 This repository provides the **runtime orchestration code**; the compiled `.axmodel` binaries are hosted on Hugging Face.
 
 ---
-## Requirements ( has requirements.txt ) :
+###REQUIREMENTS : 
+
 
 # Python deps for SD1.5 AX-M1 runtime (Euler)
 # Note: AXCLRT / axengine / onnxruntime with AXCLRTExecutionProvider may come from Radxa/AXERA packages.
@@ -242,6 +242,7 @@ requests>=2.28
 # Utilities
 tqdm>=4.64
 pyyaml>=6.0
+
 
 ## Disclaimer
 
