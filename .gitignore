@@ -1,0 +1,15 @@
+# heavy binaries (hosted on Hugging Face)
+axmodels/*.axmodel
+
+# outputs / logs
+out/
+outputs/
+*.log
+
+# python cache
+__pycache__/
+*.pyc
+
+# local notes
+Tree.txt
+scripts/tree.txt

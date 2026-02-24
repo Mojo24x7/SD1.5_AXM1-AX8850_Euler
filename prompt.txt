@@ -1,0 +1,19 @@
+(.venv_sd15) rock@rock-5b-plus-2:~/axm1_sd/sd15_euler512$ python3 txt2img_axengine_euler.py \
+  --weights_dir ./axmodels \
+  --tokenizer_dir ./support/tokenizer \
+  --te sd15_text_encoder_sim.axmodel \
+  --unet unet.axmodel \
+  --vae vae_decoder.axmodel \
+  --prompt "a realistic portrait photo, sharp focus, natural lighting, 85mm lens" \
+  --negative "blurry, low quality, deformed, bad anatomy" \
+  --steps 30 \
+  --guidance 7.5 \
+  --seed 1 \
+  --out out_axengine_fixed.png \
+  --debug_io
+
+
+
+
+ENV : 
+source /home/rock/axm1_sd/.venv_sd15/bin/activate

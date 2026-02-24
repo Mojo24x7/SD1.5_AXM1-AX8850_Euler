@@ -1,0 +1,329 @@
+{
+  "toolchain_version": "5.1-patch1",
+  "toolchain_commit": "cd6c30b4",
+  "target_platform": "AX650A",
+  "cfg": {
+    "input": "onnx-models-euler-512/fixed/vae_encoder.onnx",
+    "output_dir": "axmodels_euler_512",
+    "output_name": "vae_encoder.axmodel",
+    "npu_mode": "NPU3",
+    "quant": {
+      "input_configs": [
+        {
+          "tensor_name": "image_sample",
+          "calibration_dataset": "./datasets/calib_data_vae_encoder/data.tar",
+          "calibration_format": "Numpy",
+          "calibration_size": 16,
+          "calibration_mean": [],
+          "calibration_std": []
+        }
+      ],
+      "layer_configs": [
+        {
+          "start_tensor_names": [
+            "DEFAULT"
+          ],
+          "end_tensor_names": [
+            "DEFAULT"
+          ],
+          "data_type": "U16",
+          "layer_name": "",
+          "op_type": "",
+          "weight_data_type": "DefaultDataType",
+          "layer_names": [],
+          "op_types": [],
+          "output_data_type": "DefaultDataType"
+        }
+      ],
+      "precision_analysis": true,
+      "precision_analysis_method": "EndToEnd",
+      "conv_bias_data_type": "FP32",
+      "refine_weight_threshold": 1e-06,
+      "enable_smooth_quant": true,
+      "smooth_quant_threshold": 0.2,
+      "smooth_quant_strength": 0.6,
+      "ln_scale_data_type": "FP32",
+      "disable_auto_refine_scale": true,
+      "finetune_epochs": 500,
+      "finetune_block_size": 4,
+      "finetune_batch_size": 1,
+      "finetune_lr": 0.001,
+      "device": "cpu",
+      "calibration_method": "MinMax",
+      "precision_analysis_mode": "Reference",
+      "highest_mix_precision": false,
+      "transformer_opt_level": 0,
+      "input_sample_dir": "",
+      "check": 0,
+      "enable_easy_quant": false,
+      "disable_quant_optimization": false,
+      "enable_brecq": false,
+      "enable_lsq": false,
+      "enable_adaround": false
+    },
+    "input_processors": [
+      {
+        "tensor_name": "image_sample",
+        "tensor_layout": "NCHW",
+        "src_layout": "NCHW",
+        "src_dtype": "FP32",
+        "tensor_format": "AutoColorSpace",
+        "src_format": "AutoColorSpace",
+        "src_extra_shapes": [],
+        "csc_mode": "NoCSC",
+        "csc_mat": [],
+        "mean": [],
+        "std": [],
+        "padding": [],
+        "padding_mode": "",
+        "padding_constant_value": 0,
+        "slicing": []
+      }
+    ],
+    "output_processors": [
+      {
+        "tensor_name": "latent_sample",
+        "output_dtype": "FP32",
+        "tensor_layout": "DefaultLayout",
+        "dst_perm": []
+      }
+    ],
+    "compiler": {
+      "check": 0,
+      "npu_perf": false,
+      "check_rtol": 1e-05,
+      "check_cosine_simularity": 0.999,
+      "static_batch_sizes": [],
+      "check_tensor_black_list": [],
+      "compiler_group_patterns": [],
+      "sub_configs": [],
+      "start_tensor_names": [],
+      "end_tensor_names": []
+    },
+    "debug": {
+      "stride_ios": [],
+      "pre_post_process_test": false,
+      "axe_test": false,
+      "dump_frontend_graph": false,
+      "ignore_onnx_opt_check": false,
+      "disable_check_reference": false,
+      "save_debug_field": false,
+      "dump_symbol_table": false,
+      "quant_static_reshape_pass": false,
+      "quant_axmodel_check": false,
+      "quant_axmodel_output_simularity_thres": 0.0,
+      "default_quant_dataset": "",
+      "precision_analysis_start_tensors": [],
+      "precision_analysis_end_tensors": [],
+      "disable_compiler": false,
+      "compiler_enable_inplace": false,
+      "compiler_enable_slice_mode": false,
+      "compiler_enable_tile_mode": false,
+      "compiler_dump_debug_data": false,
+      "compiler_regen_batch_gt": false,
+      "compiler_no_batch": false,
+      "dump_op_groups": false,
+      "disable_auto_set_extremum_op_fp32": false,
+      "ocm_size": 0.0,
+      "single_eu_io": false,
+      "dump_op_groups_tag": ""
+    },
+    "work_dir": "",
+    "model_type": "ONNX",
+    "target_hardware": "AX650",
+    "input_shapes": "",
+    "const_processors": [],
+    "op_processors": [],
+    "quant_op_processors": [],
+    "custom_ops": []
+  },
+  "axmodel_extra": {
+    "tensor_extras": [
+      {
+        "name": "image_sample",
+        "layout": "NCHW",
+        "color_space": "AutoColorSpace",
+        "enable_stride": false,
+        "group_index": 0
+      },
+      {
+        "name": "latent_sample",
+        "layout": "DefaultLayout",
+        "color_space": "AutoColorSpace",
+        "enable_stride": false,
+        "group_index": 0
+      }
+    ],
+    "version": "1",
+    "subgraphs": [
+      {
+        "name": "subgraph_npu_0",
+        "dotneus": [
+          {
+            "neu_key": "subgraph_npu_0_b1_neu",
+            "batch": 1,
+            "extra_inputs": [
+              {
+                "name": "params",
+                "const_data_key": "npu_params",
+                "type": "DotNeuInputConst",
+                "dyn_param_expr_key": ""
+              }
+            ]
+          }
+        ],
+        "type": "NPUDotNeu"
+      }
+    ],
+    "build_info": {
+      "npu_mode": "NPU3",
+      "static_batch_sizes": [],
+      "max_dynamic_batch_size": 0,
+      "dot_neu_compress_method": "DotNeuCompressMethodFlat"
+    },
+    "hardware_type": "AX650"
+  },
+  "build_start": 1768996915.2397418,
+  "build_time": 3260.057734966278,
+  "input_model_size": 136728151,
+  "macs": 1151018205184,
+  "compiled_model_size": 46032288,
+  "input_model": "/data/onnx-models-euler-512/fixed/vae_encoder.onnx",
+  "work_dir": "/data/axmodels_euler_512",
+  "output_dir": "/data/axmodels_euler_512",
+  "output_model": "/data/axmodels_euler_512/vae_encoder.axmodel",
+  "npu_mode": 2,
+  "npu_mode_str": "NPU3",
+  "model_type": 0,
+  "model_type_str": "ONNX",
+  "quant_dir": "/data/axmodels_euler_512/quant",
+  "onnx_model_check": false,
+  "frontend_dir": "/data/axmodels_euler_512/frontend",
+  "random_seed": 96401048,
+  "stride_ios": [],
+  "input_tensor_infos": {
+    "image_sample": {
+      "name": "image_sample",
+      "shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "dtype": "FP32",
+      "from_op": null,
+      "to_ops": [],
+      "is_input": false,
+      "is_output": false,
+      "is_const": false,
+      "data": null,
+      "scale": null,
+      "zero_point": null
+    }
+  },
+  "compiler_dir": "/data/axmodels_euler_512/compiler",
+  "compiler_extra_input_shapes": [],
+  "compiler_static_batchs": [],
+  "compiler_max_dynamic_batch": 0,
+  "compiler_batch_sizes": [],
+  "enable_compiler_check": false,
+  "dump_npu_case": false,
+  "dump_npu_trace": false,
+  "gen_neusight": false,
+  "compress_mcode": true,
+  "code": "Success",
+  "error_msg": "",
+  "axe_code": "NotRunning",
+  "axe_error_msg": "",
+  "io_info": "image_sample:[1,3,512,512],FP32;latent_sample:[1,8,64,64],FP32",
+  "subgraphs": [
+    {
+      "group_index": 0,
+      "index": 0,
+      "type": "NPU",
+      "macs": 1151018205184,
+      "npu_graph_info": {
+        "estimated_cycles": 383321345,
+        "mcode_bytes": 11261344,
+        "param_bytes": 34768796,
+        "input_bytes": 3145736,
+        "output_bytes": 131072,
+        "swap_bytes": 201326592,
+        "ddr_read_bytes": 2271661536,
+        "ddr_write_bytes": 1082261504,
+        "unchunked_timestamp": 0,
+        "chunked_timestamp": 0,
+        "ocm_bytes": 0,
+        "eu_kinds": [
+          "CONV",
+          "CONV",
+          "CONV",
+          "CONV",
+          "CONV",
+          "CONV",
+          "TENG",
+          "TENG",
+          "TENG",
+          "CV",
+          "CV",
+          "CV",
+          "SDMA",
+          "SDMA",
+          "SDMA"
+        ],
+        "eu_jobs": [
+          15421,
+          14969,
+          15720,
+          15527,
+          15706,
+          15517,
+          23267,
+          22901,
+          23247,
+          2453,
+          2399,
+          2413,
+          7701,
+          7608,
+          373
+        ],
+        "eu_cycles": [
+          226453833,
+          224932869,
+          225979768,
+          227297225,
+          225996613,
+          227290645,
+          152418743,
+          147365020,
+          148790573,
+          9253930,
+          9936375,
+          9088688,
+          145284219,
+          143427408,
+          377850
+        ],
+        "eu_duty_cycles": [
+          0.5907676037214248,
+          0.5867997481103494,
+          0.5895308737400137,
+          0.5929678268782645,
+          0.5895748185925905,
+          0.5929506611240374,
+          0.3976265454516695,
+          0.3844425088343461,
+          0.38816145840035093,
+          0.024141441947580215,
+          0.02592178892988032,
+          0.023710361074802594,
+          0.3790141620265594,
+          0.3741701565368149,
+          0.000985726479440971
+        ]
+      }
+    }
+  ],
+  "custom_ops": []
+}
